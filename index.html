@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Priory database</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Lancaster Priory Database</h1>
+    <div class="filters">
+        <label for="name"></label><input type="text" id="name" min="1" placeholder="Name">
+        <input type="text" id="description" min="1" placeholder="Keywords / description">
+        <select id="category">
+            <option value="">All Categories</option>
+        </select>
+        <select id="subcategory">
+            <option value="">All Subcategories</option>
+        </select>
+        <input type="number" min="1" id="start_year" placeholder="Start year">
+        <span>to</span>
+        <input type="number" min="1" id="end_year" placeholder="End year">
+        <input type="button" value="Search" id="search">
+    </div>
+    <table class="database_table" id="historical_table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Subcategory</th>
+                <th>Year</th>
+                <th>Images</th>
+            </tr>
+        </thead>
+        <tbody id="historical_data">
+        </tbody>
+    </table>
+    <script
+            type="module"
+            src="app.js">
+    </script>
+</body>
+</html>

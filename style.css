@@ -1,0 +1,56 @@
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+
+}
+
+.filters * {
+    padding: 8px;
+}
+
+input {
+    position: relative;
+    display: block;
+    border-color: slategrey;
+    border-radius: 10px;
+}
+
+h1 {
+    color: slategrey;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.header-input {
+    width: 100%;
+    box-sizing: border-box;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+}
+.database_table {
+    margin-top: 30px;
+}
+th, td {
+    border: 1px solid white;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background: slategrey;
+    color: white;
+}
+td {
+    background: #e9e9ed;
+    color: black;
+}
+.item-image {
+    width: 100%;
+    max-width: 170px;
+    object-fit: contain;
+}
