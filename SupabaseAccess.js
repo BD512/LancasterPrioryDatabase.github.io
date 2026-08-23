@@ -73,6 +73,14 @@ export class SupabaseAccess {
         console.log("Data", data);
         return new Set(data.map(row => row.ImagePath));
     }
+    async checkImageExists(url) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = url;
+        });
+    }
     async loadImage(name) {
         const cached = sessionStorage.getItem(name);
         if (cached) {
@@ -83,16 +91,16 @@ export class SupabaseAccess {
         // todo make so checks if image is stored in github repo before loading from supabase?
         // const fs = require('node:fs');
         console.log('here')
-        var url = ''
-        try {
-            url = './Images/'.concat(name);
+        var url = './Images/'.concat(name);
+        if (await this.checkImageExists(url)){
             sessionStorage.setItem(name, url);
             const img = new Image();
             img.src = url;
             console.log("using local storage");
             return img;
-        } catch (err) {
-            console.log("error", err);
+        } else {
+            console.log('using supabase access');
+            // console.log("error", err);
             url = this.connection.storage
                 .from(this.bucket_name)
                 .getPublicUrl(name).data.publicUrl;
