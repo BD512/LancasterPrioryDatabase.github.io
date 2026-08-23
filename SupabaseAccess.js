@@ -80,13 +80,27 @@ export class SupabaseAccess {
             img.src = cached;
             return img;
         }
-        const url = this.connection.storage
-            .from(this.bucket_name)
-            .getPublicUrl(name).data.publicUrl;
-        sessionStorage.setItem(name, url);
-        const img = new Image();
-        img.src = url;
-        return img;
+        // todo make so checks if image is stored in github repo before loading from supabase?
+        // const fs = require('node:fs');
+        console.log('here')
+        var url = ''
+        try {
+            url = './Images/'.concat(name);
+            sessionStorage.setItem(name, url);
+            const img = new Image();
+            img.src = url;
+            console.log("using local storage");
+            return img;
+        } catch (err) {
+            console.log("error", err);
+            url = this.connection.storage
+                .from(this.bucket_name)
+                .getPublicUrl(name).data.publicUrl;
+            sessionStorage.setItem(name, url);
+            const img = new Image();
+            img.src = url;
+            return img;
+        }
     }
 
 }
