@@ -103,9 +103,10 @@ async function showTable(){
 }
 
 await showCategories();
-await showTable();
+
 // console.log((await database.getSubcategoryDict())["Stained Glass Windows"]);
 // var a = await database.getSubcategoriesForCategory("Stalls");
 // console.log(a);
 document.getElementById("category").addEventListener("change", showSubcategories);
 document.getElementById("search").addEventListener("click", showTable);
+await showTable();
