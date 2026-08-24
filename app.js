@@ -92,7 +92,7 @@ async function showTable(){
             const img = await database.loadImage(path);
             img.classList.add("item-image");
             img.alt = entry.Name;
-            img.loading = "lazy";
+            // img.loading = "lazy";
             images_cell.appendChild(img);
         }
         row.appendChild(images_cell);
