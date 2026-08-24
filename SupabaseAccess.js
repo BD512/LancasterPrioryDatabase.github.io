@@ -87,21 +87,21 @@ export class SupabaseAccess {
             const img = new Image();
             img.src = cached;
             return img;
-        }
+        // }
         // todo make so checks if image is stored in github repo before loading from supabase?
         // const fs = require('node:fs');
-        console.log('here')
-        var url = './Images/'.concat(name);
-        if (await this.checkImageExists(url)){
-            sessionStorage.setItem(name, url);
-            const img = new Image();
-            img.src = url;
-            console.log("using local storage");
-            return img;
+        // console.log('here')
+        // var url = './Images/'.concat(name);
+        // if (await this.checkImageExists(url)){
+            // sessionStorage.setItem(name, url);
+            // const img = new Image();
+            // img.src = url;
+            // console.log("using local storage");
+            // return img;
         } else {
             console.log('using supabase access');
             // console.log("error", err);
-            url = this.connection.storage
+            const url = this.connection.storage
                 .from(this.bucket_name)
                 .getPublicUrl(name).data.publicUrl;
             sessionStorage.setItem(name, url);
