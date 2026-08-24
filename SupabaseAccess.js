@@ -89,7 +89,6 @@ export class SupabaseAccess {
             return img;
         }
         // todo make so checks if image is stored in github repo before loading from supabase?
-        // const fs = require('node:fs');
         console.log('here')
         var url = './Images/'.concat(name);
         if (await this.checkImageExists(url)){
@@ -101,7 +100,7 @@ export class SupabaseAccess {
         } else {
             console.log('using supabase access');
             // console.log("error", err);
-            const url = this.connection.storage
+            url = this.connection.storage
                 .from(this.bucket_name)
                 .getPublicUrl(name).data.publicUrl;
             sessionStorage.setItem(name, url);
