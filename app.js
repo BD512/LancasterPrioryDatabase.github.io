@@ -22,6 +22,7 @@ async function showCategories(){
 }
 
 async function showSubcategories(){
+    console.log("Updating subcategories");
     const category_select = document.getElementById("category");
     const subcategory_select = document.getElementById("subcategory");
     const category = category_select.options[category_select.selectedIndex].value
@@ -91,7 +92,7 @@ async function showTable(){
             const img = await database.loadImage(path);
             img.classList.add("item-image");
             img.alt = entry.Name;
-            img.loading = "lazy";
+            // img.loading = "lazy";
             images_cell.appendChild(img);
         }
         row.appendChild(images_cell);
